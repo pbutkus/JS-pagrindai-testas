@@ -183,19 +183,34 @@ mažoji raidė, skaičius, specialusis simbolis. Visi slaptažodžio
 simboliai privalo būti atsitiktiniai ir atsitiktine tvarka.
 */
 const generatePassword = (length) => {
-    const characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+~`|}{[]:;?><,./-=";
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W)[\S]+$/;
+    const chars = [
+        "0123456789",
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        "abcdefghijklmnopqrstuvwxyz",
+        "!@#$%^&*()_+~`|}{[]:;?><,./-=",
+    ];
 
-    // Reikalinga optimizacija
-    while (true) {
-        const password = Array.from(crypto.getRandomValues(new Uint32Array(length)))
-            .map((x) => characters[x % characters.length])
-            .join('');
-        if (regex.test(password)) {
-            return password;
+    const passwordArr = Array.from(Array(length), () => null);
+
+    for (let str of chars) {
+        let index = Math.floor(Math.random() * passwordArr.length);
+
+        while (passwordArr[index] !== null) {
+            index = Math.floor(Math.random() * passwordArr.length);
+        }
+
+        passwordArr[index] = str[Math.floor(Math.random() * str.length)];
+    }
+
+    for (let i = 0; i < passwordArr.length; i++) {
+        if (passwordArr[i] === null) {
+            const type = chars[Math.floor(Math.random() * chars.length)];
+            const char = type[Math.floor(Math.random() * type.length)];
+            passwordArr[i] = char;
         }
     }
 
+    return passwordArr.join("");
 }
 
 
