@@ -81,8 +81,8 @@ const formatAge = (age) => {
 
     console.log(`Age in seconds: ${ageInSeconds}`);
     console.log(`Age in minutes: ${ageInMinutes}`);
-    console.log(`Age in Hours: ${ageInHours}`);
-    console.log(`Age in Days: ${ageInDays}`);
+    console.log(`Age in hours: ${ageInHours}`);
+    console.log(`Age in days: ${ageInDays}`);
     console.log(`Age in years: ${age}`);
 }
 
