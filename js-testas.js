@@ -59,7 +59,7 @@ const calculateBMI = () => {
     if (BMI > 25) {
         console.log("Overweight");
     } else if (BMI < 18.5) {
-        console.log("Underweigth");
+        console.log("Underweight");
     } else {
         console.log("Normal weight");
     }
