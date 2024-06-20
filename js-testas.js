@@ -202,11 +202,11 @@ const generatePassword = (length) => {
         passwordArr[index] = str[Math.floor(Math.random() * str.length)];
     }
 
+    const charsString = chars.join("");
+
     for (let i = 0; i < passwordArr.length; i++) {
         if (passwordArr[i] === null) {
-            const type = chars[Math.floor(Math.random() * chars.length)];
-            const char = type[Math.floor(Math.random() * type.length)];
-            passwordArr[i] = char;
+            passwordArr[i] = charsString[Math.floor(Math.random() * charsString.length)];
         }
     }
 
